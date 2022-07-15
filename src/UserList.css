@@ -1,0 +1,18 @@
+.UserListDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.del_btn {
+  margin-left: 10px;
+  background: rgb(159, 159, 159, 0.5);
+  border: none;
+  border-radius: 10%;
+  font-size: 20px;
+  cursor: pointer;
+}
+.del_btn:hover {
+  transform: translate(0, 3px);
+  border-bottom: 3px solid black;
+  background: rgb(100, 100, 100, 0.5);
+}

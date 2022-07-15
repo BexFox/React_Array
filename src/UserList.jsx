@@ -1,18 +1,26 @@
 import React from 'react';
-
-function User({ user }) {
+import './UserList.css';
+function User({ user, onRemove }) {
   return (
-    <div>
-      <p>{user.username}</p> <span>({user.email})</span>
+    <div className='UserListDiv'>
+      <b>{user.username}</b> <span>({user.email})</span>
+      <button
+        className='del_btn'
+        onClick={() => {
+          onRemove(user.id);
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 }
 
-export default function UserList({ users }) {
+export default function UserList({ users, onRemove }) {
   return (
     <div>
       {users.map((user) => (
-        <User user={user} key={user.id} />
+        <User user={user} key={user.id} onRemove={onRemove} />
       ))}
     </div>
   );
