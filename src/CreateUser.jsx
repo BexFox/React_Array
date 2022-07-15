@@ -1,19 +1,34 @@
-import React from 'react';
-
+import React, { useRef } from 'react';
+import './CreateUser.css';
 export default function CreateUser({ username, email, onChange, onCreate }) {
+  const firstInput = useRef();
+  const secondInput = useRef();
   return (
-    <div>
+    <div className='createUser'>
       <input
         name='username'
         placeholder='ID'
         onChange={onChange}
         value={username}
+        ref={firstInput}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            secondInput.current.focus();
+          }
+        }}
+        autoFocus
       />
       <input
         name='email'
         placeholder='Email'
         onChange={onChange}
         value={email}
+        ref={secondInput}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onCreate();
+          }
+        }}
       />
       <button onClick={onCreate}>Register</button>
     </div>
