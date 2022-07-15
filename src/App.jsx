@@ -16,13 +16,24 @@ function App() {
       [name]: value,
     });
   };
-  const users = [
+  const [users, setUsers] = useState([
     { id: 1, username: 'avion', email: 'avion@example.com' },
     { id: 2, username: 'bonita', email: 'bonita@example.com' },
     { id: 3, username: 'cielo', email: 'cielo@example.com' },
-  ];
+  ]);
   const nextId = useRef(4);
   const onCreate = () => {
+    const user = {
+      id: nextId.current,
+      username,
+      email,
+    };
+    setUsers(users.concat(user));
+
+    setInputs({
+      username: '',
+      email: '',
+    });
     nextId.current += 1;
   };
 
