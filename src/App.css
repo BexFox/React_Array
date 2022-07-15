@@ -2,6 +2,7 @@
   height: 100vh;
   background: rgb(133, 79, 79);
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   font-size: calc(10px + 1rem);
