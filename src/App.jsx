@@ -17,9 +17,9 @@ function App() {
     });
   };
   const [users, setUsers] = useState([
-    { id: 1, username: 'avion', email: 'avion@example.com' },
-    { id: 2, username: 'bonita', email: 'bonita@example.com' },
-    { id: 3, username: 'cielo', email: 'cielo@example.com' },
+    { id: 1, username: 'avion', email: 'avion@example.com', active: true },
+    { id: 2, username: 'bonita', email: 'bonita@example.com', active: false },
+    { id: 3, username: 'cielo', email: 'cielo@example.com', active: false },
   ]);
   const nextId = useRef(4);
   const onCreate = () => {
@@ -40,6 +40,14 @@ function App() {
   const onRemove = (id) => {
     setUsers(users.filter((user) => user.id !== id));
   };
+
+  const onToggle = (id) => {
+    setUsers(
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
+  };
   return (
     <div className='App'>
       <CreateUser
@@ -48,7 +56,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
     </div>
   );
 }
