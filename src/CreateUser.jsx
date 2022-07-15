@@ -1,17 +1,17 @@
 import React from 'react';
 
-function CreateUser({ username, email, onChange, onCreate }) {
+export default function CreateUser({ username, email, onChange, onCreate }) {
   return (
     <div>
       <input
         name='username'
-        placholder='ID'
+        placeholder='ID'
         onChange={onChange}
         value={username}
       />
       <input
         name='email'
-        placholder='Email'
+        placeholder='Email'
         onChange={onChange}
         value={email}
       />
@@ -19,5 +19,3 @@ function CreateUser({ username, email, onChange, onCreate }) {
     </div>
   );
 }
-
-export default CreateUser;
