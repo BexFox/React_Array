@@ -29,12 +29,15 @@ function App() {
       email,
     };
     setUsers(users.concat(user));
+
+
     setInputs({
       username: '',
       email: '',
     });
     nextId.current += 1;
   };
+
   return (
     <div className='App'>
       <CreateUser
