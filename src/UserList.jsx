@@ -8,10 +8,13 @@ function User({ user, onRemove, onToggle }) {
           cursor: 'pointer',
           color: user.active ? 'green' : 'black',
         }}
-        onClick={() => onToggle(user.id)}
+        onClick={() => {
+          onToggle(user.id);
+        }}
       >
         {user.username}
-      </b>{' '}
+      </b>
+
       <span>({user.email})</span>
       <button
         className='del_Btn'
