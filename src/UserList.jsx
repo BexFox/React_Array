@@ -1,12 +1,22 @@
-import React from 'react';
-import './UserList.css';
+import React, { useEffect } from "react";
+import "./UserList.css";
+
 function User({ user, onRemove, onToggle }) {
+  useEffect(() => {
+    console.log("The value of user is set");
+    console.log(user);
+    return () => {
+      console.log("Before value of unchanged");
+      console.log(user);
+    };
+  }, []);
+
   return (
-    <div className='userList'>
+    <div className="userList">
       <b
         style={{
-          cursor: 'pointer',
-          color: user.active ? 'green' : 'black',
+          cursor: "pointer",
+          color: user.active ? "green" : "black",
         }}
         onClick={() => {
           onToggle(user.id);
@@ -17,7 +27,7 @@ function User({ user, onRemove, onToggle }) {
 
       <span>({user.email})</span>
       <button
-        className='del_Btn'
+        className="del_Btn"
         onClick={() => {
           onRemove(user.id);
         }}
