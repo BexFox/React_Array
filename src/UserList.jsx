@@ -2,14 +2,9 @@ import React, { useEffect } from "react";
 import "./UserList.css";
 
 function User({ user, onRemove, onToggle }) {
-  useEffect(() => {
-    console.log("The value of user is set");
-    console.log(user);
-    return () => {
-      console.log("Before value of unchanged");
-      console.log(user);
-    };
-  }, [user]);
+  // useEffect(() => {
+  //   console.log(user);
+  // });
   return (
     <div className="userList">
       <b
