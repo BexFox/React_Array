@@ -9,8 +9,7 @@ function User({ user, onRemove, onToggle }) {
       console.log("Before value of unchanged");
       console.log(user);
     };
-  }, []);
-
+  }, [user]);
   return (
     <div className="userList">
       <b
@@ -24,7 +23,7 @@ function User({ user, onRemove, onToggle }) {
       >
         {user.username}
       </b>
-
+      &nbsp;
       <span>({user.email})</span>
       <button
         className="del_Btn"
