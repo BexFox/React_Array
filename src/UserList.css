@@ -1,8 +1,17 @@
+/* !notice
+  .userList should be the container, not individually, it's not the proper.
+*/
 .userList {
+  padding: 30px;
+  margin-bottom: 50px;
+  border: 4px solid #9b9b9b14;
+}
+.user {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 700px;
   margin-top: 5px;
   line-height: 40px;
   border-bottom: 2px rgba(181, 161, 151, 0.526) solid;

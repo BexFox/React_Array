@@ -6,7 +6,7 @@ function User({ user, onRemove, onToggle }) {
   //   console.log(user);
   // });
   return (
-    <div className='userList'>
+    <div className='user'>
       <b
         style={{
           cursor: 'pointer',
@@ -34,7 +34,7 @@ function User({ user, onRemove, onToggle }) {
 
 export default function UserList({ users, onRemove, onToggle }) {
   return (
-    <div>
+    <div className='userList'>
       {users.map((user) => (
         <User
           user={user}

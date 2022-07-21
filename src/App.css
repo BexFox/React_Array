@@ -1,9 +1,11 @@
 .App {
   height: 100vh;
   background: rgb(133, 79, 79);
+  font-size: calc(10px + 1rem);
   display: flex;
   flex-flow: column;
-  justify-content: center;
   align-items: center;
-  font-size: calc(10px + 1rem);
+}
+.createUser {
+  padding: 100px 0;
 }
