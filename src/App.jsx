@@ -1,17 +1,17 @@
-import React, { useState, useRef, useMemo } from "react";
-import UserList from "./UserList";
-import CreateUser from "./CreateUser";
-import "./App.css";
+import React, { useState, useRef, useMemo } from 'react';
+import UserList from './UserList';
+import CreateUser from './CreateUser';
+import './App.css';
 
 function countActiveUsers(users) {
-  console.log("Count activate users...");
+  console.log('Count activate users...');
   return users.filter((user) => user.active).length;
 }
 
 function App() {
   const [inputs, setInputs] = useState({
-    username: "",
-    email: "",
+    username: '',
+    email: '',
   });
   const { username, email } = inputs;
   const onChange = (e) => {
@@ -22,9 +22,9 @@ function App() {
     });
   };
   const [users, setUsers] = useState([
-    { id: 1, username: "avion", email: "avion@example.com", active: true },
-    { id: 2, username: "bonita", email: "bonita@example.com", active: false },
-    { id: 3, username: "cielo", email: "cielo@example.com", active: false },
+    { id: 1, username: 'avion', email: 'avion@example.com', active: true },
+    { id: 2, username: 'bonita', email: 'bonita@example.com', active: false },
+    { id: 3, username: 'cielo', email: 'cielo@example.com', active: false },
   ]);
   const nextId = useRef(4);
   const onCreate = () => {
@@ -36,8 +36,8 @@ function App() {
     setUsers(users.concat(user));
 
     setInputs({
-      username: "",
-      email: "",
+      username: '',
+      email: '',
     });
     nextId.current += 1;
   };
@@ -55,7 +55,7 @@ function App() {
   };
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
-    <div className="App">
+    <div className='App'>
       <CreateUser
         username={username}
         email={email}
