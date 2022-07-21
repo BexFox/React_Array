@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './UserList.css';
 
-function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user, onRemove, onToggle }) {
   // useEffect(() => {
   //   console.log(user);
   // });
+  console.log('user rendering'); // Delete when check.
   return (
     <div className='user'>
       <b
@@ -30,9 +31,9 @@ function User({ user, onRemove, onToggle }) {
       </button>
     </div>
   );
-}
+});
 
-export default function UserList({ users, onRemove, onToggle }) {
+export default React.memo(function UserList({ users, onRemove, onToggle }) {
   return (
     <div className='userList'>
       {users.map((user) => (
@@ -45,4 +46,4 @@ export default function UserList({ users, onRemove, onToggle }) {
       ))}
     </div>
   );
-}
+});

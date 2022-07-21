@@ -1,6 +1,12 @@
 import React, { useRef } from 'react';
 import './CreateUser.css';
-export default function CreateUser({ username, email, onChange, onCreate }) {
+
+export default React.memo(function CreateUser({
+  username,
+  email,
+  onChange,
+  onCreate,
+}) {
   const firstInput = useRef();
   const secondInput = useRef();
   return (
@@ -33,4 +39,4 @@ export default function CreateUser({ username, email, onChange, onCreate }) {
       <button onClick={onCreate}>Register</button>
     </div>
   );
-}
+});
