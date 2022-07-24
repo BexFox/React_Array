@@ -9,3 +9,19 @@
 .createUser {
   padding: 100px 0;
 }
+.Counter {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 300px;
+  border-top: 5px solid #000;
+}
+.Counter p {
+  margin-top: 20px;
+}
+.Counter button {
+  padding: 10px;
+  margin: 3px;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useMemo, useCallback } from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
+import Counter from './Counter';
 import './App.css';
 
 function countActiveUsers(users) {
@@ -64,6 +65,7 @@ function App() {
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       <div>Number of active users : {count}</div>
+      <Counter />
     </div>
   );
 }

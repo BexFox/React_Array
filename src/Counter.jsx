@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 
 function Counter() {
-  const [number, SetNumber] = useState(0);
+  const [number, setNumber] = useState(0);
+
   const onIncrease = () => {
-    setNumber();
+    setNumber(number + 1);
   };
   const onDecrease = () => {
-    setNumber();
+    setNumber(number - 1);
   };
 
   return (
-    <div>
-      <h1>number</h1>
-      <button onClick={onIncrease}>+1</button>
-      <button onClick={onDecrease}>-1</button>
+    <div className='Counter'>
+      <p>Counter</p>
+      <h1>{number}</h1>
+      <div>
+        <button onClick={onIncrease}>+1</button>
+        <button onClick={onDecrease}>-1</button>
+      </div>
     </div>
   );
 }
