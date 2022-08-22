@@ -1,10 +1,9 @@
-import React, { useReducer, useRef, useMemo, useCallback } from 'react';
+import React, { useRef, useReducer, useMemo, useCallback } from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
-import './App.css';
 
 function countActiveUsers(users) {
-  console.log('Count activate users...');
+  console.log('Counting the number of active users...');
   return users.filter((user) => user.active).length;
 }
 
@@ -14,9 +13,24 @@ const initialState = {
     email: '',
   },
   users: [
-    { id: 1, username: 'avion', email: 'avion@example.com', active: true },
-    { id: 2, username: 'bonita', email: 'bonita@example.com', active: false },
-    { id: 3, username: 'cielo', email: 'cielo@example.com', active: false },
+    {
+      id: 1,
+      username: 'avion',
+      email: 'avion@gmail.com',
+      active: true,
+    },
+    {
+      id: 2,
+      username: 'buscar',
+      email: 'buscar@example.com',
+      active: false,
+    },
+    {
+      id: 3,
+      username: 'cielo',
+      email: 'cielo@example.com',
+      active: false,
+    },
   ],
 };
 
@@ -34,6 +48,18 @@ function reducer(state, action) {
       return {
         inputs: initialState.inputs,
         users: state.users.concat(action.user),
+      };
+    case 'TOGGLE_USER':
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.id ? { ...user, active: !user.active } : user
+        ),
+      };
+    case 'REMOVE_USER':
+      return {
+        ...state,
+        users: state.users.filter((user) => user.id !== action.id),
       };
     default:
       return state;
@@ -68,17 +94,32 @@ function App() {
     nextId.current += 1;
   }, [username, email]);
 
+  const onToggle = useCallback((id) => {
+    dispatch({
+      type: 'TOGGLE_USER',
+      id,
+    });
+  }, []);
+
+  const onRemove = useCallback((id) => {
+    dispatch({
+      type: 'REMOVE_USER',
+      id,
+    });
+  }, []);
+
+  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
-    <div className='App'>
+    <>
       <CreateUser
         username={username}
         email={email}
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} />
-      <div>Number of active users : 0</div>
-    </div>
+      <UserList users={users} onToggle={onToggle} onRemove={onRemove} />
+      <div>The number of active users: {count}</div>
+    </>
   );
 }
 
