@@ -9,10 +9,6 @@ function countActiveUsers(users) {
 }
 
 const initialState = {
-  inputs: {
-    username: '',
-    email: '',
-  },
   users: [
     {
       id: 1,
@@ -39,19 +35,16 @@ function reducer(state, action) {
   switch (action.type) {
     case 'CREATE_USER':
       return {
-        inputs: initialState.inputs,
         users: state.users.concat(action.user),
       };
     case 'TOGGLE_USER':
       return {
-        ...state,
         users: state.users.map((user) =>
           user.id === action.id ? { ...user, active: !user.active } : user
         ),
       };
     case 'REMOVE_USER':
       return {
-        ...state,
         users: state.users.filter((user) => user.id !== action.id),
       };
     default:
