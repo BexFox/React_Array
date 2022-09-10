@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+import { UserDispatch } from './App';
 import './UserList.css';
 
-const User = React.memo(function User({ user, onRemove, onToggle }) {
-  // useEffect(() => {
-  //   console.log(user);
-  // });
-  console.log('user rendering'); // Delete when check.
+const User = React.memo(function User({ user }) {
+  const dispatch = useContext(UserDispatch);
+
   return (
     <div className='user'>
       <b
@@ -14,7 +13,7 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
           color: user.active ? 'green' : 'black',
         }}
         onClick={() => {
-          onToggle(user.id);
+          dispatch({ type: 'TOGGLE_USER', id: user.id });
         }}
       >
         {user.username}
@@ -24,7 +23,7 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
       <button
         className='del_Btn'
         onClick={() => {
-          onRemove(user.id);
+          dispatch({ type: 'REMOVE_USER', id: user.id });
         }}
       >
         Remove
@@ -33,17 +32,14 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
   );
 });
 
-export default React.memo(function UserList({ users, onRemove, onToggle }) {
+function UserList({ users }) {
   return (
     <div className='userList'>
       {users.map((user) => (
-        <User
-          user={user}
-          key={user.id}
-          onRemove={onRemove}
-          onToggle={onToggle}
-        />
+        <User user={user} key={user.id} />
       ))}
     </div>
   );
-});
+}
+
+export default React.memo(UserList);
