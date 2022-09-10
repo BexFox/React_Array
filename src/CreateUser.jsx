@@ -15,7 +15,7 @@ export default React.memo(function CreateUser({
         name='username'
         placeholder='ID'
         onChange={onChange}
-        value={username}
+        value={username || ''}
         ref={firstInput}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
@@ -33,6 +33,8 @@ export default React.memo(function CreateUser({
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             onCreate();
+            firstInput.current.focus();
+            firstInput.value = '';
           }
         }}
       />
